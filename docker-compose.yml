@@ -1,0 +1,7 @@
+version: "2.2"
+services:
+  swiss-weather:
+    build: ./docker
+    restart: always
+    ports:
+      - 127.0.0.1:10101:8080

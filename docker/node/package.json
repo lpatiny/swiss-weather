@@ -1,0 +1,55 @@
+{
+  "name": "swiss-weather",
+  "version": "0.0.0",
+  "description": "Predict swiss weather",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "eslint": "eslint src",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepublishOnly": "rollup -c",
+    "start": "node -r esm src/index.js",
+    "test": "npm run test-coverage && npm run eslint",
+    "test-coverage": "jest --coverage",
+    "test-only": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lpatiny/swiss-weather.git"
+  },
+  "keywords": [],
+  "author": "Luc Patiny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lpatiny/swiss-weather/issues"
+  },
+  "homepage": "https://github.com/lpatiny/swiss-weather#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@types/jest": "^26.0.19",
+    "eslint": "^7.16.0",
+    "eslint-config-cheminfo": "^5.2.2",
+    "esm": "^3.2.25",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rollup": "^2.35.1"
+  },
+  "dependencies": {
+    "fastify": "^3.9.2",
+    "node-fetch": "^2.6.1"
+  }
+}
