@@ -48,7 +48,6 @@ server.get('/forecast24', async (request, reply) => {
     },
   );
   let resultDay = await response.json();
-
   let line = [];
 
   let currentHour = {};
@@ -62,6 +61,8 @@ server.get('/forecast24', async (request, reply) => {
     currentHour.smb3,
     mapping[currentHour.smb3],
   );
+
+  console.log(JSON.stringify(result24['24hours'], undefined, 2));
 
   result24['24hours'].forEach((item) => {
     let currentSlot = {};

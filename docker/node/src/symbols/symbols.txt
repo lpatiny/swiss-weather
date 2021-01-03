@@ -44,3 +44,17 @@
 -14	mo_klhe_shsn_bl
 -15	mo_klhe_shsr
 -16	mo_klhe_shsr_bl
+-17	ne
+-18	grdu
+-19	grhe
+-20	grdu_ra
+-21	grdu_sn
+-22	grdu_sr
+-23	grdu_ra3
+-24	grdu_sn3
+-25	grdu_shra
+-26	grdu_shra_bl
+-27	grdu_shsn
+-28	grdu_shsn_bl
+-29	grdu_shsr
+-30	grdu_shsr_bl
