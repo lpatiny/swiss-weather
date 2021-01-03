@@ -1,6 +1,8 @@
 import fastify from 'fastify';
 import fetch from 'node-fetch';
 
+import mapping from './symbols/mapping.json';
+
 const server = fastify({ logger: true });
 
 server.get('/forecast24', async (request, reply) => {
@@ -34,7 +36,6 @@ server.get('/forecast24', async (request, reply) => {
     },
   );
   let result24 = await response.json();
-
   response = await fetch(
     `https://api.srgssr.ch/forecasts/v1.0/weather/current?latitude=${latitude}&longitude=${longitude}`,
     {
@@ -58,8 +59,8 @@ server.get('/forecast24', async (request, reply) => {
   line.push(
     currentHour.ttt,
     currentHour.rr3,
-    currentHour.pr3,
     currentHour.smb3,
+    mapping[currentHour.smb3],
   );
 
   result24['24hours'].forEach((item) => {
@@ -71,12 +72,11 @@ server.get('/forecast24', async (request, reply) => {
     line.push(
       currentSlot.ttt,
       currentSlot.rr3,
-      currentSlot.pr3,
-      currentSlot.smb3,
+      currentHour.smb3,
+      mapping[currentHour.smb3],
     );
   });
   return line.join(',');
-  return JSON.stringify(result24, undefined, 2);
 });
 
 server.listen(8080, '0.0.0.0', (err, address) => {
