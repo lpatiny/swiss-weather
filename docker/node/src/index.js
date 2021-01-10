@@ -62,8 +62,6 @@ server.get('/forecast24', async (request, reply) => {
     mapping[currentHour.smb3],
   );
 
-  console.log(JSON.stringify(result24['24hours'], undefined, 2));
-
   result24['24hours'].forEach((item) => {
     let currentSlot = {};
     item.values.forEach((entry) => {
@@ -77,6 +75,16 @@ server.get('/forecast24', async (request, reply) => {
       mapping[currentHour.smb3],
     );
   });
+
+  response = await fetch(
+    `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&formatted=0`,
+  );
+  let resultSunrise = await response.json();
+  let sunrise = new Date(resultSunrise.sunrise);
+  let sunset = new Date(resultSunrise.sunset);
+
+  console.log(sunrise, sunset);
+
   return line.join(',');
 });
 
