@@ -80,10 +80,19 @@ server.get('/forecast24', async (request, reply) => {
     `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=today&formatted=0`,
   );
   let resultSunrise = await response.json();
-  let sunrise = new Date(resultSunrise.sunrise);
-  let sunset = new Date(resultSunrise.sunset);
+  let sunrise = new Date(resultSunrise.results.sunrise);
+  let sunset = new Date(resultSunrise.results.sunset);
 
-  console.log(sunrise, sunset);
+  let intlDateObj = new Intl.DateTimeFormat('fr-CH', {
+    timeZone: 'Europe/Zurich',
+    dateStyle: 'short',
+    timeStyle: 'short',
+  });
+
+  let sunriseString = intlDateObj.format(sunrise);
+  let sunsetString = intlDateObj.format(sunset);
+  line.push(sunriseString.replace(/.* /, ''));
+  line.push(sunsetString.replace(/.* /, ''));
 
   return line.join(',');
 });
