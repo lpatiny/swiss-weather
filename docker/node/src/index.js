@@ -47,6 +47,8 @@ server.get('/forecast24', async (request, reply) => {
       },
     },
   );
+  //console.log('-----');
+  //console.log(JSON.stringify(result24));
   let resultDay = await response.json();
   let line = [];
 
@@ -55,6 +57,7 @@ server.get('/forecast24', async (request, reply) => {
     let key = Object.keys(entry)[0];
     currentHour[key] = entry[key];
   });
+
   line.push(
     currentHour.ttt,
     currentHour.rr3,
@@ -71,8 +74,8 @@ server.get('/forecast24', async (request, reply) => {
     line.push(
       currentSlot.ttt,
       currentSlot.rr3,
-      currentHour.smb3,
-      mapping[currentHour.smb3],
+      currentSlot.smb3,
+      mapping[currentSlot.smb3],
     );
   });
 
