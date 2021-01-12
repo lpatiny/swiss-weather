@@ -47,8 +47,8 @@ server.get('/forecast24', async (request, reply) => {
       },
     },
   );
-  //console.log('-----');
-  //console.log(JSON.stringify(result24));
+  console.log('-----');
+  console.log(JSON.stringify(result24));
   let resultDay = await response.json();
   let line = [];
 
@@ -60,7 +60,7 @@ server.get('/forecast24', async (request, reply) => {
 
   line.push(
     currentHour.ttt,
-    currentHour.rr3,
+    currentHour.rr3 || '0',
     currentHour.smb3,
     mapping[currentHour.smb3],
   );
@@ -73,7 +73,7 @@ server.get('/forecast24', async (request, reply) => {
     });
     line.push(
       currentSlot.ttt,
-      currentSlot.rr3,
+      currentSlot.rr3 || '0',
       currentSlot.smb3,
       mapping[currentSlot.smb3],
     );
